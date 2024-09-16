@@ -18,7 +18,7 @@ env.config();
 //so that we can use environment variables 
 
 
-mongoose.connect(process.env.db)
+mongoose.connect(`${process.env.db}`)
     .then(()=>{
         console.log("DataBase Connected!")
     }).catch((e)=>{
