@@ -8,9 +8,9 @@ const createReview = async(req,res)=>{
         const savedReview = await review.save()
 
         const newReview = await Review.findById(savedReview._id).populate('userId')
-        res.status(201).json(newReview)
+        return res.status(201).json(newReview)
     }catch(e){
-        res.status(500).json({message:e.message})
+        return res.status(500).json({message:e.message})
     }
 }
 
@@ -18,9 +18,9 @@ const getReviews = async(req,res)=>{
     try{
         const productId = req.params.productId;
         const reviews = await Review.find({productId}).populate('userId')
-        res.status(201).json(reviews)
+        return res.status(201).json(reviews)
     }catch(e){
-        res.status(500).json({message:e.message})
+        return res.status(500).json({message:e.message})
     }
 }
 
@@ -31,12 +31,12 @@ const updateReviews = async(req,res)=>{
         const updateReview = await Review.findByIdAndUpdate(reviewId,{rating,comment},{new:true})
 
         if(!updateReview){
-            res.send(404).json({message:"Review not found"})
+            return res.send(404).json({message:"Review not found"})
         }
 
-        res.send(201).json(updateReview)
+        return res.send(201).json(updateReview)
     }catch(e){
-        res.status(500).json({message:e.message})
+        return res.status(500).json({message:e.message})
     }
 }
 
@@ -45,11 +45,11 @@ const deleteReview = async(req,res)=>{
         const reviewId = req.params.id
         const review = await Review.findByIdAndDelete(reviewId)
         if(!review){
-            res.send(404).json({message:"Review not found"})
+            return res.send(404).json({message:"Review not found"})
         }
-        res.send(201).json({message:"Review Deleted successfully"})
+        return res.send(201).json({message:"Review Deleted successfully"})
     }catch(e){
-        res.status(500).json({message:e.message})
+        return res.status(500).json({message:e.message})
     }
 }
 

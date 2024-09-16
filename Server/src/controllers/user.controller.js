@@ -19,9 +19,9 @@ const signupController = async(req,res)=>{
 
         await newUser.save()
 
-        res.status(201).json({message:"User created successfully"})
+        return res.status(201).json({message:"User created successfully"})
     }catch(e){
-        res.status(400).json({message:e.message})
+        return res.status(400).json({message:e.message})
     }
 }
 
@@ -31,13 +31,13 @@ const signinController = async(req,res)=>{
         const user = await User.findOne({email})
 
         if(!user){
-            res.status(404).json({message:"User does not exist!"})
+            return res.status(404).json({message:"User does not exist!"})
         }
 
         const isValidPassword = await bcrypt.compare(password,user.password)
 
         if(!isValidPassword){
-            res.status(401).json({message:"Invalid password!"})
+            return res.status(401).json({message:"Invalid password!"})
         }
 
         //generate jwt token if authenticated for session management
@@ -46,10 +46,10 @@ const signinController = async(req,res)=>{
             expiresIn:"10d"
         })
 
-        res.status(200).json({user,token})
+        return res.status(200).json({user,token})
 
     }catch(e){
-        res.status(400).json({message:e.message})
+        return res.status(400).json({message:e.message})
     }
 }
 
@@ -58,14 +58,14 @@ const getUserProfile = async(req,res)=>{
         const userId = req.query.id
         const user = await User.findById(userId)
         if(!user){
-            res.status(404).json({message:"user does not exist!"})
+            return res.status(404).json({message:"user does not exist!"})
         }
 
         //for security pupose:
         user.password = undefined
-        res.status(200).json(user)
+        return res.status(200).json(user)
     }catch(e){
-        res.send(400).json({message:e.message})
+        return res.send(400).json({message:e.message})
     }
 }
 

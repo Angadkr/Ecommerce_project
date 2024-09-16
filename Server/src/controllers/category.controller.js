@@ -15,9 +15,8 @@ const createCategory = async (req,res)=>{
 
 const getAllCategories = async(req,res)=>{
     try{
-        return res.send("Hello")
-        // const categories = await Category.find()
-        // return res.status(200).json(categories)
+        const categories = await Category.find()
+        return res.status(200).json(categories)
     }catch(e){
         return res.status(400).json({message:e.message})
     }
@@ -35,9 +34,9 @@ const updateCategoryById = async(req,res)=>{
         category.name = name
         await category.save()
 
-        res.status(200).json(category)
+        return res.status(200).json(category)
     }catch(e){
-        res.status(400).json({message:e.message})
+        return res.status(400).json({message:e.message})
     }
 }
 
@@ -45,14 +44,14 @@ const deleteCategoryById = async(req,res)=>{
     try{
         const category = await Category.findById(req.params.id)
         if(!category){
-            res.status(404).json({message:"Category does not exist!"})
+            return res.status(404).json({message:"Category does not exist!"})
         } 
 
         await category.deleteOne()
-        res.status(200).json({message:"Category deleted!"})
+        return res.status(200).json({message:"Category deleted!"})
 
     }catch(e){
-        res.status(500).json({message:e.message})
+        return res.status(500).json({message:e.message})
     }
 }
 
