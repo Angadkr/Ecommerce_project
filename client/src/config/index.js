@@ -1,4 +1,4 @@
-export const urlConfig = "http://localhost:2000/api"
+export const urlConfig = "https://ecommerce-project-dusky.vercel.app/api"
 
 // if (typeof window !== 'undefined') {
 //     // Access window object here
