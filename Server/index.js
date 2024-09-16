@@ -33,7 +33,7 @@ cloudinary.config({
 })
 
 app.use('/healthCheck',(req,res)=>{
-    res.send(process.env.PORT)
+    res.send(process.env.db)
 })
 app.use(cors())
 app.use(express.json())
