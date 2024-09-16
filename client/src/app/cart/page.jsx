@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAllCartsByUserId, deleteCartItem, fetchCartItem } from '../../reducers/cartReducer';
-import CartCard from '../../../components/ui/CartCard';
+import CartCard from '../../../components/UI/CartCard';
 import { Col, Container, Row } from "react-bootstrap";
 import { addOrder } from '../../reducers/orderReducer';
 import Swal from 'sweetalert2';
