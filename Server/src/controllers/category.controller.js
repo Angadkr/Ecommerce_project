@@ -7,18 +7,19 @@ const createCategory = async (req,res)=>{
 
         await newCategory.save()
 
-        res.status(200).json(newCategory)
+        return res.status(200).json(newCategory)
     }catch(e){
-        res.status(400).json({message:e.message})
+        return res.status(400).json({message:e.message})
     }
 }
 
 const getAllCategories = async(req,res)=>{
     try{
-        const categories = await Category.find()
-        res.status(200).json(categories)
+        return res.send("Hello")
+        // const categories = await Category.find()
+        // return res.status(200).json(categories)
     }catch(e){
-        res.status(400).json({message:e.message})
+        return res.status(400).json({message:e.message})
     }
 }
 

@@ -46,7 +46,7 @@ app.use('/api',reviewRoutes)
 app.use('/api',cartRoutes)
 app.use('/api',orderRoutes)
 
-app.use(express.static(path.join(__dirname,"/client/.next")))
+// app.use(express.static(path.join(__dirname,"/client/.next")))
 
 app.listen(process.env.PORT,(req,res)=>{
     console.log(`listening on port ${process.env.PORT}!`)
