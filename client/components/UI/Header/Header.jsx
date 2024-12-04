@@ -82,7 +82,7 @@ const Header = () => {
                 id={color ? "header-text" : "header"}
                 className="text-[2vmax] pl-2 sm:text-[2vmax] md:text-[3vmax] lg:text-[1.7vmax]  text-[#33080A] m-0"
               >
-                Ecommerce Store
+                SwiDel
               </p>
             </div>
           </Navbar.Brand>
